@@ -1,0 +1,49 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+:user: user-controller-test
+:post: post-controller-test
+:reply: reply-controller-test
+:bookmark: bookmark-controller-test
+
+= REST API
+:toc: left
+:toclevels: 2
+:source-highlighter: highlightjs
+
+== 회원
+=== 1. 회원가입
+===== Request Example
+include::{snippets}/{user}/join_test/http-request.adoc[]
+
+===== Response Example
+include::{snippets}/{user}/join_test/http-response.adoc[]
+
+=== 2. 로그인
+===== Request Example
+include::{snippets}/{user}/login_test/http-request.adoc[]
+
+===== Response Example
+include::{snippets}/{user}/login_test/http-response.adoc[]
+
+=== 3. 자동 로그인
+===== Request Example
+include::{snippets}/{user}/auto_login_test/http-request.adoc[]
+
+===== Response Example
+include::{snippets}/{user}/auto_login_test/http-response.adoc[]
+
+=== 4. 회원정보
+===== Request Example
+include::{snippets}/{user}/userinfo_test/http-request.adoc[]
+
+===== Response Example
+include::{snippets}/{user}/userinfo_test/http-response.adoc[]
+
+=== 5. 회원패스워드 변경
+===== Request Example
+include::{snippets}/{user}/user_password_update_test/http-request.adoc[]
+
+===== Response Example
+include::{snippets}/{user}/user_password_update_test/http-response.adoc[]
