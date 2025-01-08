@@ -24,7 +24,7 @@ public class FitnessController {
                 .body(ApiUtil.success(dto));
     }
 
-    // 카테고리에 따른 운동 리스트 보내주기
+    // 카테고리에 따른 운동 리스트 보내주기/
     @GetMapping("/fitness-list/{categoryId}")
     public ResponseEntity<?> exerciseListByCate(@PathVariable("categoryId") int categoryId) {
         List<FitnessResponse.ListByCateDTO> dto = fitnessService.getFitnessListByCate(categoryId);
