@@ -13,10 +13,17 @@ public class FitnessService {
 
 
     public List<FitnessResponse.ExerciseListDTO> getFitnessList() {
-        List<FitnessResponse.ExerciseListDTO> list = fitnessRepository.findAll().stream()
+
+        return fitnessRepository.findAll().stream()
                 .map(FitnessResponse.ExerciseListDTO::new)
                 .toList();
+    }
 
-        return list;
+    public List<FitnessResponse.ListByCateDTO> getFitnessListByCate(int categoryId) {
+        return fitnessRepository.findById(categoryId).stream()
+                .map(FitnessResponse.ListByCateDTO::new)
+                .toList();
+
+
     }
 }
