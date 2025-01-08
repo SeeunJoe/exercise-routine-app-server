@@ -18,16 +18,23 @@ public class PlanService {
         List<Plan> planList = planRepository.findUserWeekInfo(userId);
 
         List<WeekInformation> weekInformationList = new ArrayList<>();
-        for (int i = 0; i < planList.size(); i++) {
-            List<String> fitnessNameList = new ArrayList<>();
-            for (Plan plan : planList) {
-                if (plan.getDayOfWeek().equals(CommonData.weekNameArr[i])) {
-                    fitnessNameList.add(plan.getFitness().getFitnessName());
-                }
-            }
-            weekInformationList.add(new WeekInformation(CommonData.weekNameArr[i], fitnessNameList));
-        }
 
+        if (planList.size() == 0) {
+            for (int i = 0; i < 7; i++) {
+                weekInformationList.add(new WeekInformation(CommonData.weekNameArr[i], new ArrayList<>()));
+            }
+
+        } else {
+            for (int i = 0; i < planList.size(); i++) {
+                List<String> fitnessNameList = new ArrayList<>();
+                for (Plan plan : planList) {
+                    if (plan.getDayOfWeek().equals(CommonData.weekNameArr[i])) {
+                        fitnessNameList.add(plan.getFitness().getFitnessName());
+                    }
+                }
+                weekInformationList.add(new WeekInformation(CommonData.weekNameArr[i], fitnessNameList));
+            }
+        }
         return new PlanResponse.UserWeekInfoDTO(weekInformationList);
     }
 }
