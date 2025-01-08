@@ -1,6 +1,6 @@
 package com.metacoding.exerciseappserver.plan;
 
-import com.metacoding.exerciseappserver.category.Category;
+import com.metacoding.exerciseappserver.fitness.Fitness;
 import com.metacoding.exerciseappserver.user.User;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -21,7 +21,7 @@ public class Plan {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Category category;
+    private Fitness fitness;
 
     @Column(length = 20)
     private String dayOfWeek;
@@ -36,10 +36,10 @@ public class Plan {
     private Integer weight;
 
     @Builder
-    public Plan(Integer id, User user, Category category, String dayOfWeek, Integer exerciseSet, Integer repeat, Integer weight) {
+    public Plan(Integer id, User user, Fitness fitness, String dayOfWeek, Integer exerciseSet, Integer repeat, Integer weight) {
         this.id = id;
         this.user = user;
-        this.category = category;
+        this.fitness = fitness;
         this.dayOfWeek = dayOfWeek;
         this.exerciseSet = exerciseSet;
         this.repeat = repeat;

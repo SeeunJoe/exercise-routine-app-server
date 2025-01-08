@@ -17,13 +17,13 @@ insert into fitness_tb(fitness_name, category_id, image_url, content) values('�
 insert into fitness_tb(fitness_name, category_id, image_url, content) values('운동5', 5, '이미지경로5', '운동5의 내용');
 
 
-insert into plan_tb(user_id, category_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '월', 3, 5, 50);
-insert into plan_tb(user_id, category_id, day_of_week, exercise_set, repeat, weight) values(1, 2, '월', 3, 5, 50);
-insert into plan_tb(user_id, category_id, day_of_week, exercise_set, repeat, weight) values(1, 3, '월', 3, 5, 50);
-insert into plan_tb(user_id, category_id, day_of_week, exercise_set, repeat, weight) values(1, 4, '월', 3, 5, 50);
-insert into plan_tb(user_id, category_id, day_of_week, exercise_set, repeat, weight) values(1, 5, '화', 3, 5, 50);
-insert into plan_tb(user_id, category_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '화', 3, 5, 50);
-insert into plan_tb(user_id, category_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '수', 3, 5, 50);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '월', 3, 5, 50);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 2, '월', 3, 5, 50);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 3, '월', 3, 5, 50);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 4, '월', 3, 5, 50);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 5, '화', 3, 5, 50);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '화', 3, 5, 50);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '수', 3, 5, 50);
 
 
 
