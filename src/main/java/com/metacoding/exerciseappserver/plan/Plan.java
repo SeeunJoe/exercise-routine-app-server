@@ -23,11 +23,11 @@ public class Plan {
     @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
-    @Column(length = 20, unique = true)
-    private String day;
+    @Column(length = 20)
+    private String dayOfWeek;
 
     @Column(nullable = false)
-    private Integer set;
+    private Integer exerciseSet;
 
     @Column(nullable = false)
     private Integer repeat;
@@ -36,12 +36,12 @@ public class Plan {
     private Integer weight;
 
     @Builder
-    public Plan(Integer id, User user, Category category, String day, Integer set, Integer repeat, Integer weight) {
+    public Plan(Integer id, User user, Category category, String dayOfWeek, Integer exerciseSet, Integer repeat, Integer weight) {
         this.id = id;
         this.user = user;
         this.category = category;
-        this.day = day;
-        this.set = set;
+        this.dayOfWeek = dayOfWeek;
+        this.exerciseSet = exerciseSet;
         this.repeat = repeat;
         this.weight = weight;
     }

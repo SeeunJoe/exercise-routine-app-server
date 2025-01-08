@@ -23,17 +23,17 @@ public class Fitness {
     private Category category;
 
     @Column(nullable = false)
-    private String image;
+    private String imageUrl;
 
     @Column(nullable = false)
     private String content;
 
     @Builder
-    public Fitness(Integer id, String fitnessName, Category category, String image, String content) {
+    public Fitness(Integer id, String fitnessName, Category category, String imageUrl, String content) {
         this.id = id;
         this.fitnessName = fitnessName;
         this.category = category;
-        this.image = image;
+        this.imageUrl = imageUrl;
         this.content = content;
     }
 }
