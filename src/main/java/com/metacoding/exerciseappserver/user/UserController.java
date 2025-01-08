@@ -47,6 +47,7 @@ public class UserController {
 
     @PostMapping("/join")
     public ResponseEntity<?> join(@RequestBody UserRequest.JoinDTO requestDTO) {
+        System.out.println(requestDTO.toString());
         return ResponseEntity.ok(ApiUtil.success(userService.회원가입(requestDTO)));
     }
 
@@ -67,4 +68,5 @@ public class UserController {
         userService.패스워드수정(id, requestDTO);
         return ResponseEntity.ok(ApiUtil.success(null));
     }
+
 }

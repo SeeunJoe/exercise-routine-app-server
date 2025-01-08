@@ -9,11 +9,15 @@ public class UserRequest {
         private String username;
         private String password;
         private String email;
+        private Integer height;
+        private Integer weight;
         User toEntity(String encPassword) {
             return User.builder()
                     .username(username)
                     .password(encPassword)
                     .email(email)
+                    .height(height)
+                    .weight(weight)
                     .build();
         }
     }
