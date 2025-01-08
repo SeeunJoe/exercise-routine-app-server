@@ -13,10 +13,21 @@ public class FitnessService {
 
 
     public List<FitnessResponse.ExerciseListDTO> getFitnessList() {
-        List<FitnessResponse.ExerciseListDTO> list = fitnessRepository.findAll().stream()
+
+        return fitnessRepository.findAll().stream()
                 .map(FitnessResponse.ExerciseListDTO::new)
                 .toList();
+    }
 
-        return list;
+/*    Board board = boardRepository.findByIdJoinUserAndReply(id)
+            .orElseThrow(() -> new Exception404("해당 id의 게시글이 없습니다 : "+id));
+        return new BoardResponse.DetailDTO(board, sessionUser);*/
+
+    public List<FitnessResponse.ListByCateDTO> getFitnessListByCate(int categoryId) {
+        return fitnessRepository.findById(categoryId).stream()
+                .map(FitnessResponse.ListByCateDTO::new)
+                .toList();
+
+
     }
 }
