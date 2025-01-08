@@ -7,13 +7,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @RequiredArgsConstructor
 @Controller
 public class PlanController {
     private final PlanService planService;
-    @GetMapping("/plan/user")
+    @GetMapping("/api/plan/user")
     public ResponseEntity<?> userinfo(@SessionUser User sessionUser) {
 //        if (sessionUser.getId() != id) {
 //            throw new Exception403("해당 정보에 접근할 권한이 없습니다 : "+id);
