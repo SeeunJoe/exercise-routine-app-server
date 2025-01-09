@@ -69,4 +69,11 @@ public class UserController {
         return ResponseEntity.ok(ApiUtil.success(null));
     }
 
+    @PutMapping("/api/user/update")
+    public ResponseEntity<?> updateUserInfo(@RequestBody UserRequest.UserInfoUpdateDTO requestDTO, @SessionUser User sessionUser) {
+        System.out.println("updateUserInfo 실행");
+        UserResponse.UpdateInfoDTO updateInfoDTO= userService.회원정보수정(1,requestDTO);
+        return ResponseEntity.ok(ApiUtil.success(updateInfoDTO));
+    }
+
 }
