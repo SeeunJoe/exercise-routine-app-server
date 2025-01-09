@@ -7,17 +7,30 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @Controller
 public class PlanController {
     private final PlanService planService;
     @GetMapping("/api/plan/user")
+
     public ResponseEntity<?> userinfo(@SessionUser User sessionUser) {
 //        if (sessionUser.getId() != id) {
 //            throw new Exception403("해당 정보에 접근할 권한이 없습니다 : "+id);
 //        }
         ApiUtil.ApiResult<PlanResponse.UserWeekInfoDTO> resp = ApiUtil.success(planService.findUserWeekInfo(sessionUser.getId()));
         return ResponseEntity.ok(resp);
+    }
+
+    // 요일 별 운동 계획 상세보기 화면에 요일 별 운동 계획 리스트 출력 (user_id와 day(요일) 필요)
+    // TODO : 데이터 넘어오는거 확인 후 매핑 url앞에 /api 붙이기 (인증 가능하도록)
+    @GetMapping("/plan/{id}")
+    public ResponseEntity plan(@PathVariable Integer id, @RequestParam("day") String day) {
+        System.out.println(id); // user_id 확인용 출력
+        System.out.println(day); // 요일 확인용 출력
+    return  ResponseEntity.ok(null);
     }
 }
