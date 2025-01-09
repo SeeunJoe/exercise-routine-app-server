@@ -34,4 +34,10 @@ public class UserResponse {
             this(user.getId(), user.getUsername());
         }
     }
+
+    public record UpdateInfoDTO(Integer id, String username, String email, Integer weight, Integer height) {
+        public UpdateInfoDTO(User user) {
+            this(user.getId(), user.getUsername(), user.getEmail(), user.getWeight(), user.getHeight());
+        }
+    }
 }

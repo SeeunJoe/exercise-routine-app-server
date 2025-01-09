@@ -32,4 +32,13 @@ public class UserRequest {
     public static class PasswordUpdateDTO {
         private String password;
     }
+
+    @Data
+    public static class UserInfoUpdateDTO {
+        private String username;
+        private String password;
+        private String email;
+        private Integer height;
+        private Integer weight;
+    }
 }
