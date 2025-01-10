@@ -19,13 +19,5 @@ public class FitnessRepository {
                 .getResultList();
     }
 
-    public List<Fitness> findById(int categoryId) {
-        Query q =  em.createQuery("select f from Fitness f join fetch f.category c where c.id =:categoryId", Fitness.class);
-        q.setParameter("categoryId",categoryId);
-        try {
-            return q.getResultList();
-        } catch (Exception e) {
-            throw new Exception500("카테고리에 운동 없음");
-        }
-    }
+
 }
