@@ -54,6 +54,7 @@ public class PlanResponse {
         }
     }
 
+    @Data
     public static class UpdatePlanDTO {
         private Integer id;
         private Integer exerciseSet;

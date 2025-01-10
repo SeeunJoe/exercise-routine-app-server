@@ -52,6 +52,8 @@ public class PlanService {
 
     public PlanResponse.UpdatePlanDTO updatePlan(PlanRequest.UpdatePlanDTO requestDTO) {
 
+        System.out.println("***********요청DTO의 ID값: " + requestDTO.getId());
+
         Plan plan = planRepository.findByPlanId(requestDTO.getId());
 
         plan.updatePlan(

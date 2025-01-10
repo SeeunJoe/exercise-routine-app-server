@@ -20,8 +20,8 @@ import java.util.Map;
 @Controller
 public class PlanController {
     private final PlanService planService;
-    @GetMapping("/api/plan/user")
 
+    @GetMapping("/api/plan/user")
     public ResponseEntity<?> userinfo(@SessionUser User sessionUser) {
 //        if (sessionUser.getId() != id) {
 //            throw new Exception403("해당 정보에 접근할 권한이 없습니다 : "+id);
@@ -30,7 +30,7 @@ public class PlanController {
         return ResponseEntity.ok(resp);
     }
 
-    @GetMapping("/plan/{id}")
+    @GetMapping("/plan/detail/{id}")
     public ResponseEntity<?> plan(@PathVariable Integer id) {
         PlanResponse.DetailPlanDTO detailPlanDTO = planService.findByPlanId(id);
         return ResponseEntity.ok(ApiUtil.success(detailPlanDTO));

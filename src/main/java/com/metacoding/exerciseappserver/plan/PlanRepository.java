@@ -30,7 +30,7 @@ public class PlanRepository {
 
     public void updatePlanData(Plan plan) {
         String jpql = "update Plan p set p.exerciseSet = :exerciseSet, p.repeat = :repeat, p.weight = :weight where p.id = :planId";
-        Query q = em.createQuery(jpql,Plan.class);
+        Query q = em.createQuery(jpql);
         q.setParameter("exerciseSet", plan.getExerciseSet());
         q.setParameter("repeat", plan.getRepeat());
         q.setParameter("weight", plan.getWeight());
