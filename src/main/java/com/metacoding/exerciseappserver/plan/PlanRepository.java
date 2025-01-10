@@ -20,4 +20,23 @@ public class PlanRepository {
     }
 
 
+    public Plan findByPlanId(Integer id) {
+        String jpql = "select p from Plan p where p.id = :planId";
+        Query q = em.createQuery(jpql, Plan.class);
+        q.setParameter("planId", id);
+        Plan planData = (Plan) q.getSingleResult();
+        return  planData;
+    }
+
+    public void updatePlanData(Plan plan) {
+        String jpql = "update Plan p set p.exerciseSet = :exerciseSet, p.repeat = :repeat, p.weight = :weight where p.id = :planId";
+        Query q = em.createQuery(jpql,Plan.class);
+        q.setParameter("exerciseSet", plan.getExerciseSet());
+        q.setParameter("repeat", plan.getRepeat());
+        q.setParameter("weight", plan.getWeight());
+        q.setParameter("planId", plan.getId());
+
+        q.executeUpdate();
+    }
+
 }

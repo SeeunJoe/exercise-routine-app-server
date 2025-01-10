@@ -38,6 +38,36 @@ public class PlanResponse {
             this.weekInfo = weekInfo;
         }
     }
+
+    public record DetailPlanDTO(Integer id, String day ,String fitnessName, String fitnessImgUrl, String fitnessContent, Integer exerciseSet, Integer repeat, Integer weight) {
+        public DetailPlanDTO(Plan plan) {
+            this(
+                    plan.getId(),
+                    plan.getDayOfWeek(),
+                    plan.getFitness().getFitnessName()!= null ? plan.getFitness().getFitnessName() : "Unknown Fitness",
+                    plan.getFitness().getImageUrl()!= null ? plan.getFitness().getImageUrl() : "",
+                    plan.getFitness().getContent()!= null ? plan.getFitness().getContent() : "",
+                    plan.getRepeat(),
+                    plan.getExerciseSet(),
+                    plan.getWeight()
+            );
+        }
+    }
+
+    public static class UpdatePlanDTO {
+        private Integer id;
+        private Integer exerciseSet;
+        private Integer repeat;
+        private Integer weight;
+
+
+        public UpdatePlanDTO(Plan plan) {
+            this.id = plan.getId();
+            this.exerciseSet = plan.getExerciseSet();
+            this.repeat = plan.getRepeat();
+            this.weight = plan.getWeight();
+        }
+    }
 }
 
 

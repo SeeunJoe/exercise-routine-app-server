@@ -44,4 +44,25 @@ public class PlanService {
 
         return new PlanResponse.UserWeekInfoDTO(weekInformationList);
     }
+
+    public PlanResponse.DetailPlanDTO findByPlanId(Integer id) {
+        Plan detailPlanData = planRepository.findByPlanId(id);
+        return new PlanResponse.DetailPlanDTO(detailPlanData);
+    }
+
+    public PlanResponse.UpdatePlanDTO updatePlan(PlanRequest.UpdatePlanDTO requestDTO) {
+
+        Plan plan = planRepository.findByPlanId(requestDTO.getId());
+
+        plan.updatePlan(
+                requestDTO.getExerciseSet(),
+                requestDTO.getRepeat(),
+                requestDTO.getWeight()
+        );
+
+        planRepository.updatePlanData(plan);
+
+        return new PlanResponse.UpdatePlanDTO(plan);
+
+    }
 }
