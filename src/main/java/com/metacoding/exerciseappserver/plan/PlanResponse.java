@@ -14,7 +14,7 @@ public class PlanResponse {
         Integer userId;
         Integer fitnessId;
         String fitnessName;
-        String bodypart;
+        String bodyPart;
         Integer setCount;
         Integer repeatCount;
 
@@ -23,7 +23,7 @@ public class PlanResponse {
             this.userId = plan.getUser().getId();
             this.fitnessId = plan.getFitness().getId();
             this.fitnessName = plan.getFitness().getFitnessName();
-            this.bodypart = plan.getFitness().getCategory().getName();
+            this.bodyPart = plan.getFitness().getCategory().getName();
             this.setCount = plan.getExerciseSet();
             this.repeatCount = plan.getRepeat();
         }
