@@ -6,12 +6,8 @@ import com.metacoding.exerciseappserver.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
@@ -49,11 +45,8 @@ public class PlanController {
     }
 
     // 요일 별 운동 계획 상세보기 화면에 요일 별 운동 계획 리스트 출력 (user_id와 day(요일) 필요)
-    // TODO : 값 확인하고 api 달기
-    @GetMapping("/plan/{id}")
-    public ResponseEntity<?> plan(@PathVariable int id, @RequestParam("day") String day) {
-
-        System.out.println("프론트에서 통신 요청 왔음");
+    @GetMapping("/api/plan/{id}")
+    public ResponseEntity<?> plan(@PathVariable Integer id, @RequestParam("day") String day) {
 
         List<PlanResponse.PlanOfDayDTO> plans = planService.findPlanOfDay(id, day);
         ApiUtil.ApiResult<List<PlanResponse.PlanOfDayDTO>> resp = ApiUtil.success(plans);
@@ -63,5 +56,14 @@ public class PlanController {
         System.out.println(plans); // 반환 리스트 확인
 
         return  ResponseEntity.ok(resp);
+    }
+
+    // 요일 별 운동 계획 리스트에서 운동 삭제
+    @DeleteMapping("/plan/{id}/delete")
+    public ResponseEntity<?> deletePlan(@PathVariable Integer id) {
+        planService.deleteByPlanId(id);
+
+        return ResponseEntity.ok(ApiUtil.success(null));
+
     }
 }
