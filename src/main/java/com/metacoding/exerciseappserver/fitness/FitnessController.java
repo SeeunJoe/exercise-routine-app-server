@@ -16,7 +16,7 @@ public class FitnessController {
 
     // 운동 전체 리스트 보내주기
     @GetMapping("/fitness-list")
-    public ResponseEntity<?> exerciseList() {
+    public ResponseEntity<?> fitnessList() {
         List<FitnessResponse.FitnessDTO> dto = fitnessService.getFitnessList();
         return ResponseEntity.ok()
                 .body(ApiUtil.success(dto));
