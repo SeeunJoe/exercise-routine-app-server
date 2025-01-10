@@ -12,11 +12,13 @@ public class FitnessService {
     private final FitnessRepository fitnessRepository;
 
     public List<FitnessResponse.FitnessDTO> getFitnessList() {
+        System.out.println("tlqfkd");
+
         return fitnessRepository.findAll().stream()
                 .map(FitnessResponse.FitnessDTO::new)
                 .toList();
     }
-    public FitnessResponse.fitnessDTO findByFitnessFitnessId(int id) {
-        return new FitnessResponse.fitnessDTO(fitnessRepository.findByFitnessId(id));
+    public FitnessResponse.AddFitnessDTO findByFitnessFitnessId(int id) {
+        return new FitnessResponse.AddFitnessDTO(fitnessRepository.findByFitnessId(id));
     }
 }

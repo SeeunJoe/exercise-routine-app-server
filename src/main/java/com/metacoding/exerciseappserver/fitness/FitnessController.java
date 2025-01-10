@@ -18,6 +18,9 @@ public class FitnessController {
     @GetMapping("/fitness-list")
     public ResponseEntity<?> fitnessList() {
         List<FitnessResponse.FitnessDTO> dto = fitnessService.getFitnessList();
+
+        System.out.println("dlrj dltajwfefvewv");
+
         return ResponseEntity.ok()
                 .body(ApiUtil.success(dto));
     }

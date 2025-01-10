@@ -22,12 +22,12 @@ public class FitnessResponse {
         }
     }
     @Data
-    public static class fitnessDTO{
+    public static class AddFitnessDTO{
         private Integer FitnessId;
         private String fitnessName;
         private String imageUrl;
         private String content;
-        public fitnessDTO(Fitness fit) {
+        public AddFitnessDTO(Fitness fit) {
             this.FitnessId = fit.getId();
             this.fitnessName = fit.getFitnessName();
             this.imageUrl = fit.getImageUrl();
