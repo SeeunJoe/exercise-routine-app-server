@@ -31,6 +31,9 @@ public class FitnessController {
         return ResponseEntity.ok()
                 .body(ApiUtil.success(dto));
     }
-
+    @GetMapping("/fitness/{id}")
+    public ResponseEntity<?> exerciseById(@PathVariable("id") int id) {
+        return ResponseEntity.ok().body(ApiUtil.success(fitnessService.findByFitnessFitnessId(id)));
+    }
 }
 

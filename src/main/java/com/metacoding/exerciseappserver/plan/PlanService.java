@@ -37,4 +37,10 @@ public class PlanService {
         }
         return new PlanResponse.UserWeekInfoDTO(weekInformationList);
     }
+
+    @Transactional
+    public PlanResponse.DTO insertPlan(PlanRequest.PlanAddDTO planAddDTO) {
+       Plan plan = planRepository.save(planAddDTO.toEntity());
+        return new PlanResponse.DTO(plan);
+    }
 }

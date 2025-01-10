@@ -28,4 +28,10 @@ public class FitnessRepository {
             throw new Exception500("카테고리에 운동 없음");
         }
     }
+
+    public Fitness findByFitnessId(Integer fitnessId) {
+        Query q = em.createQuery("select f from Fitness f where f.id =:fitnessId", Fitness.class);
+        q.setParameter("fitnessId",fitnessId);
+        return (Fitness) q.getSingleResult();
+    }
 }

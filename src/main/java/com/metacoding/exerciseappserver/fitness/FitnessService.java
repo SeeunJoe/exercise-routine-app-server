@@ -26,4 +26,8 @@ public class FitnessService {
 
 
     }
+
+    public FitnessResponse.fitnessDTO findByFitnessFitnessId(int id) {
+        return new FitnessResponse.fitnessDTO(fitnessRepository.findByFitnessId(id));
+    }
 }
