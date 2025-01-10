@@ -1,6 +1,7 @@
 package com.metacoding.exerciseappserver.plan;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -39,4 +40,12 @@ public class PlanRepository {
         q.executeUpdate();
     }
 
+    public List<Plan> findPlanOfDay(Integer userId, String day) {
+        String jpql = "select p from Plan p join fetch p.fitness f where p.user.id = :userId and p.dayOfWeek = :day";
+        Query q = em.createQuery(jpql, Plan.class);
+        q.setParameter("userId", userId);
+        q.setParameter("day", day);
+
+        return q.getResultList();
+    }
 }
