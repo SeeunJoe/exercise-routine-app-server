@@ -65,6 +65,19 @@ public class PlanService {
         planRepository.updatePlanData(plan);
 
         return new PlanResponse.UpdatePlanDTO(plan);
+    }
 
+    // 요일 별 운동 계획
+    public List<PlanResponse.PlanOfDayDTO> findPlanOfDay(Integer userId, String day) {
+
+        List<Plan> planList = planRepository.findPlanOfDay(userId, day);
+        List<PlanResponse.PlanOfDayDTO> planOfDayDTOList = new ArrayList<>();
+
+        for (Plan plan2 : planList) {
+            PlanResponse.PlanOfDayDTO planOfDayDTO = new PlanResponse.PlanOfDayDTO(plan2);
+            planOfDayDTOList.add(planOfDayDTO);
+        }
+
+        return planOfDayDTOList;
     }
 }

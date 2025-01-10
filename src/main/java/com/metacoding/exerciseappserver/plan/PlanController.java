@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Map;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Controller
 public class PlanController {
@@ -47,11 +49,19 @@ public class PlanController {
     }
 
     // 요일 별 운동 계획 상세보기 화면에 요일 별 운동 계획 리스트 출력 (user_id와 day(요일) 필요)
-    // TODO : 데이터 넘어오는거 확인 후 매핑 url앞에 /api 붙이기 (인증 가능하도록)
+    // TODO : 값 확인하고 api 달기
     @GetMapping("/plan/{id}")
-    public ResponseEntity plan(@PathVariable Integer id, @RequestParam("day") String day) {
-        System.out.println(id); // user_id 확인용 출력
+    public ResponseEntity<?> plan(@PathVariable int id, @RequestParam("day") String day) {
+
+        System.out.println("프론트에서 통신 요청 왔음");
+
+        List<PlanResponse.PlanOfDayDTO> plans = planService.findPlanOfDay(id, day);
+        ApiUtil.ApiResult<List<PlanResponse.PlanOfDayDTO>> resp = ApiUtil.success(plans);
+
+        System.out.println(id); // 로그인한 user 확인용 출력
         System.out.println(day); // 요일 확인용 출력
-    return  ResponseEntity.ok(null);
+        System.out.println(plans); // 반환 리스트 확인
+
+        return  ResponseEntity.ok(resp);
     }
 }

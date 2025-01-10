@@ -9,7 +9,7 @@ public class PlanResponse {
 
     // 요일 별 운동 계획 리스트 DTO
     @Data
-    public static class PlanOfDayOfWeekDTO {
+    public static class PlanOfDayDTO {
         Integer id;
         Integer userId;
         Integer fitnessId;
@@ -18,7 +18,7 @@ public class PlanResponse {
         Integer setCount;
         Integer repeatCount;
 
-        public PlanOfDayOfWeekDTO(Plan plan) {
+        public PlanOfDayDTO(Plan plan) {
             this.id = plan.getId();
             this.userId = plan.getUser().getId();
             this.fitnessId = plan.getFitness().getId();
