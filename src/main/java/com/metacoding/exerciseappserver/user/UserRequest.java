@@ -35,8 +35,6 @@ public class UserRequest {
 
     @Data
     public static class UserInfoUpdateDTO {
-        private String username;
-        private String password;
         private String email;
         private Integer height;
         private Integer weight;
