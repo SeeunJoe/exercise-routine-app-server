@@ -46,9 +46,7 @@ public class User {
         this.password = password;
     }
 
-    public void updateUserInfo(String username, String password, String email, Integer height, Integer weight) {
-        this.username = username;
-        this.password = password;
+    public void updateUserInfo(String email, Integer height, Integer weight) {
         this.email = email;
         this.height = height;
         this.weight = weight;

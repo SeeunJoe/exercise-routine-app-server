@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.PrintWriter;
 import java.util.Optional;
 
 @Transactional(readOnly = true)
@@ -94,22 +95,16 @@ public class UserService {
         userPS.updatePassword(encPassword);
     }
 
-    public UserResponse.UpdateInfoDTO 회원정보수정(int id,UserRequest.UserInfoUpdateDTO requestDTO) {
+    @Transactional
+    public UserResponse.UpdateInfoDTO 회원정보수정(int id, UserRequest.UserInfoUpdateDTO requestDTO) {
         // DB에 저장하기 위해서는 객체로 바꿔야 한다?
-
         User user = userRepository.findById(id).orElseThrow(() -> new Exception404("id가 존재하지 않습니다."));
 
         user.updateUserInfo(
-                requestDTO.getUsername(),
-                requestDTO.getPassword(),
                 requestDTO.getEmail(),
                 requestDTO.getHeight(),
                 requestDTO.getWeight()
         );
-
-        // DB에 상태 업데이트
-        User updateUser = userRepository.save(user);
-
-        return new UserResponse.UpdateInfoDTO(updateUser);
+        return new UserResponse.UpdateInfoDTO(user);
     }
 }
