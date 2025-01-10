@@ -45,9 +45,9 @@ public class PlanService {
         return new PlanResponse.UserWeekInfoDTO(weekInformationList);
     }
 
-    @Transactional
-    public PlanResponse.DTO insertPlan(PlanRequest.PlanAddDTO planAddDTO) {
-        Plan plan = planRepository.save(planAddDTO.toEntity());
+
+    public PlanResponse.DTO insertPlan(Integer id, PlanRequest.PlanAddDTO planAddDTO) {
+       Plan plan = planRepository.save(planAddDTO.toEntity(id));
         return new PlanResponse.DTO(plan);
     }
     public PlanResponse.DetailPlanDTO findByPlanId(Integer id) {

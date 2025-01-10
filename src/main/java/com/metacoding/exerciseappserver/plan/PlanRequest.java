@@ -19,9 +19,9 @@ public class PlanRequest {
         private Integer repeat;
         private Integer weight;
 
-        Plan toEntity() {
+        Plan toEntity(Integer id){
             return Plan.builder().
-                    user(User.builder().id(userId).build()).
+                    user(User.builder().id(id).build()).
                     fitness(Fitness.builder().id(fitnessId).build()).
                     dayOfWeek(dayOfWeek).
                     exerciseSet(exerciseSet).

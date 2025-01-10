@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @Controller
@@ -28,9 +29,10 @@ public class PlanController {
         ApiUtil.ApiResult<PlanResponse.UserWeekInfoDTO> resp = ApiUtil.success(planService.findUserWeekInfo(sessionUser.getId()));
         return ResponseEntity.ok(resp);
     }
-    @PostMapping("/plan/asd")
-    public ResponseEntity<?> asd(@RequestBody PlanRequest.PlanAddDTO planAdd) {
-        ApiUtil.ApiResult<PlanResponse.DTO> resp = ApiUtil.success(planService.insertPlan(planAdd));
+
+    @PostMapping("/api/plan/{id}")
+    public ResponseEntity<?> asd(@PathVariable @SessionUser User sessoinUser, @RequestBody PlanRequest.PlanAddDTO planAdd) {
+        ApiUtil.ApiResult<PlanResponse.DTO> resp = ApiUtil.success(planService.insertPlan(sessoinUser.getId(), planAdd));
 
         System.out.println(resp.getResponse().toString());
         return ResponseEntity.ok(resp);
