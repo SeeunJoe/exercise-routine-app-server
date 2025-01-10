@@ -1,36 +1,24 @@
 package com.metacoding.exerciseappserver.fitness;
 
+import com.metacoding.exerciseappserver.category.Category;
 import lombok.Data;
 
 public class FitnessResponse {
 
-    @Data
-    public static class ExerciseListDTO {
-        private Integer FitnessId;
-        private String fitnessName;
-        private Integer categoryId;
-        private String categoryName;
 
-        public ExerciseListDTO(Fitness fitness) {
-            this.FitnessId = fitness.getId();
-            this.fitnessName = fitness.getFitnessName();
-            this.categoryId = fitness.getCategory().getId();
-            this.categoryName = fitness.getCategory().getName();
-        }
-    }
 
     @Data
-    public static class ListByCateDTO {
-        private Integer FitnessId;
+    public static class FitnessDTO {
+        private Integer fitnessId;
         private String fitnessName;
         private Integer categoryId;
-        private String categoryName;
 
-        public ListByCateDTO(Fitness fit) {
-            this.FitnessId = fit.getId();
+
+        public FitnessDTO(Fitness fit) {
+            this.fitnessId = fit.getId();
             this.fitnessName = fit.getFitnessName();
             this.categoryId = fit.getCategory().getId();
-            this.categoryName = fit.getCategory().getName();
+
         }
     }
     @Data

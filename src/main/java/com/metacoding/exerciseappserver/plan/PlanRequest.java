@@ -11,7 +11,7 @@ public class PlanRequest {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class PlanAddDTO{
+    public static class PlanAddDTO {
         private Integer userId;
         private Integer fitnessId;
         private String dayOfWeek;
@@ -19,7 +19,7 @@ public class PlanRequest {
         private Integer repeat;
         private Integer weight;
 
-        Plan toEntity(){
+        Plan toEntity() {
             return Plan.builder().
                     user(User.builder().id(userId).build()).
                     fitness(Fitness.builder().id(fitnessId).build()).
@@ -29,5 +29,12 @@ public class PlanRequest {
                     weight(weight).
                     build();
         }
+    }
+    @Data
+    public static class UpdatePlanDTO {
+        private Integer id; // planId
+        private Integer exerciseSet;
+        private Integer repeat;
+        private Integer weight;
     }
 }

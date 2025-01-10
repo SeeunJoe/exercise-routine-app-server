@@ -1,7 +1,6 @@
 package com.metacoding.exerciseappserver.plan;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -24,7 +23,34 @@ public class PlanRepository {
 
     @Transactional
     public Plan save (Plan plan) {
-       em.persist(plan);
+        em.persist(plan);
         return plan;
+    }
+    public Plan findByPlanId(Integer id) {
+        String jpql = "select p from Plan p where p.id = :planId";
+        Query q = em.createQuery(jpql, Plan.class);
+        q.setParameter("planId", id);
+        Plan planData = (Plan) q.getSingleResult();
+        return  planData;
+    }
+
+    public void updatePlanData(Plan plan) {
+        String jpql = "update Plan p set p.exerciseSet = :exerciseSet, p.repeat = :repeat, p.weight = :weight where p.id = :planId";
+        Query q = em.createQuery(jpql);
+        q.setParameter("exerciseSet", plan.getExerciseSet());
+        q.setParameter("repeat", plan.getRepeat());
+        q.setParameter("weight", plan.getWeight());
+        q.setParameter("planId", plan.getId());
+
+        q.executeUpdate();
+    }
+
+    public List<Plan> findPlanOfDay(Integer userId, String day) {
+        String jpql = "select p from Plan p join fetch p.fitness f where p.user.id = :userId and p.dayOfWeek = :day";
+        Query q = em.createQuery(jpql, Plan.class);
+        q.setParameter("userId", userId);
+        q.setParameter("day", day);
+
+        return q.getResultList();
     }
 }
