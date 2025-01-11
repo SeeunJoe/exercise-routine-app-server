@@ -21,4 +21,17 @@ public class FitnessResponse {
 
         }
     }
+    @Data
+    public static class AddFitnessDTO{
+        private Integer FitnessId;
+        private String fitnessName;
+        private String imageUrl;
+        private String content;
+        public AddFitnessDTO(Fitness fit) {
+            this.FitnessId = fit.getId();
+            this.fitnessName = fit.getFitnessName();
+            this.imageUrl = fit.getImageUrl();
+            this.content = fit.getContent();
+        }
+    }
 }

@@ -6,7 +6,19 @@ import java.util.List;
 
 
 public class PlanResponse {
-
+   public record DTO(Integer id, Integer userId, Integer fitnessId, String dayOfWeek, Integer exerciseSet, Integer repeat, Integer weight){
+       public DTO(Plan plan){
+           this(
+                   plan.getId(),
+                   plan.getUser().getId(),
+                   plan.getFitness().getId(),
+                   plan.getDayOfWeek(),
+                   plan.getExerciseSet(),
+                   plan.getRepeat(),
+                   plan.getWeight()
+           );
+       }
+   };
     // 요일 별 운동 계획 리스트 DTO
     @Data
     public static class PlanOfDayDTO {

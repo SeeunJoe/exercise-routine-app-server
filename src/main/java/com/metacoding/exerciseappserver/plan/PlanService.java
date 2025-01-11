@@ -45,6 +45,11 @@ public class PlanService {
         return new PlanResponse.UserWeekInfoDTO(weekInformationList);
     }
 
+
+    public PlanResponse.DTO insertPlan(Integer id, PlanRequest.PlanAddDTO planAddDTO) {
+       Plan plan = planRepository.save(planAddDTO.toEntity(id));
+        return new PlanResponse.DTO(plan);
+    }
     public PlanResponse.DetailPlanDTO findByPlanId(Integer id) {
         Plan detailPlanData = planRepository.findByPlanId(id);
         return new PlanResponse.DetailPlanDTO(detailPlanData);

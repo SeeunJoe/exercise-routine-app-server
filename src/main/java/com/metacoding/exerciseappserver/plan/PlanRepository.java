@@ -1,10 +1,11 @@
 package com.metacoding.exerciseappserver.plan;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -20,7 +21,11 @@ public class PlanRepository {
         return q.getResultList();
     }
 
-
+    @Transactional
+    public Plan save (Plan plan) {
+        em.persist(plan);
+        return plan;
+    }
     public Plan findByPlanId(Integer id) {
         String jpql = "select p from Plan p where p.id = :planId";
         Query q = em.createQuery(jpql, Plan.class);

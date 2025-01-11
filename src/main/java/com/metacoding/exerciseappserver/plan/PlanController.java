@@ -1,22 +1,20 @@
 package com.metacoding.exerciseappserver.plan;
 import com.metacoding.exerciseappserver._core.auth.SessionUser;
-import com.metacoding.exerciseappserver._core.error.exception.Exception403;
 import com.metacoding.exerciseappserver._core.util.ApiUtil;
 import com.metacoding.exerciseappserver.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Map;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @Controller
@@ -32,6 +30,13 @@ public class PlanController {
         return ResponseEntity.ok(resp);
     }
 
+    @PostMapping("/api/plan/{id}")
+    public ResponseEntity<?> asd(@PathVariable @SessionUser User sessoinUser, @RequestBody PlanRequest.PlanAddDTO planAdd) {
+        ApiUtil.ApiResult<PlanResponse.DTO> resp = ApiUtil.success(planService.insertPlan(sessoinUser.getId(), planAdd));
+
+        System.out.println(resp.getResponse().toString());
+        return ResponseEntity.ok(resp);
+    }
     @GetMapping("/plan/detail/{id}")
     public ResponseEntity<?> plan(@PathVariable Integer id) {
         PlanResponse.DetailPlanDTO detailPlanDTO = planService.findByPlanId(id);

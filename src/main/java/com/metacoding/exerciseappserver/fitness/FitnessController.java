@@ -18,9 +18,15 @@ public class FitnessController {
     @GetMapping("/fitness-list")
     public ResponseEntity<?> fitnessList() {
         List<FitnessResponse.FitnessDTO> dto = fitnessService.getFitnessList();
+
+        System.out.println("dlrj dltajwfefvewv");
+
         return ResponseEntity.ok()
                 .body(ApiUtil.success(dto));
     }
-
+    @GetMapping("/fitness/{id}")
+    public ResponseEntity<?> exerciseById(@PathVariable("id") int id) {
+        return ResponseEntity.ok().body(ApiUtil.success(fitnessService.findByFitnessFitnessId(id)));
+    }
 }
 
