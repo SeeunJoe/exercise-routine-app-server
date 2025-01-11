@@ -18,6 +18,15 @@ public class FitnessService {
                 .map(FitnessResponse.FitnessDTO::new)
                 .toList();
     }
+
+
+    public FitnessResponse.FitnessDetailDTO getFitnessById(Long id) {
+        Fitness responseData = fitnessRepository.findById(id);
+        FitnessResponse.FitnessDetailDTO fitnessDetailDTO = new FitnessResponse.FitnessDetailDTO(responseData);
+
+        return fitnessDetailDTO;
+
+    }
     public FitnessResponse.AddFitnessDTO findByFitnessFitnessId(int id) {
         return new FitnessResponse.AddFitnessDTO(fitnessRepository.findByFitnessId(id));
     }

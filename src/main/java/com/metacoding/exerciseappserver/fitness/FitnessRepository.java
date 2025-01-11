@@ -29,6 +29,12 @@ public class FitnessRepository {
         }
     }
 
+    public Fitness findById(Long id) {
+        String jpql = "select f from Fitness f JOIN FETCH f.category where f.id = :id";
+        Query q = em.createQuery(jpql,Fitness.class);
+        q.setParameter("id", id);
+        return (Fitness) q.getSingleResult();
+    }
     public Fitness findByFitnessId(Integer fitnessId) {
         Query q = em.createQuery("select f from Fitness f where f.id =:fitnessId", Fitness.class);
         q.setParameter("fitnessId",fitnessId);

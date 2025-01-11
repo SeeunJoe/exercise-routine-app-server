@@ -34,4 +34,23 @@ public class FitnessResponse {
             this.content = fit.getContent();
         }
     }
+
+    @Data
+    public static class FitnessDetailDTO {
+        private Integer id;
+        private String fitnessName;
+        private Category category;
+        private String imageUrl;
+        private String content;
+
+        public FitnessDetailDTO(Fitness fit) {
+            this.id = fit.getId();
+            this.fitnessName = fit.getFitnessName();
+            this.category = fit.getCategory();
+            this.imageUrl = fit.getImageUrl();
+            this.content = fit.getContent();
+        }
+
+
+    }
 }
