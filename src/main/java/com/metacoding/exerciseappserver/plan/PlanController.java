@@ -69,6 +69,5 @@ public class PlanController {
     public ResponseEntity<?> deletePlan(@PathVariable Integer id) {
         planService.deleteByPlanId(id);
         return ResponseEntity.ok(ApiUtil.success(null));
-
     }
 }
