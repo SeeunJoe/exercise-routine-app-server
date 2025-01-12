@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 
 @NoArgsConstructor
@@ -34,6 +35,9 @@ public class Plan {
 
     @Column(nullable = false)
     private Integer weight;
+
+    @Column(nullable = false)
+    private boolean fitnessCheck = false;
 
     @Builder
     public Plan(Integer id, User user, Fitness fitness, String dayOfWeek, Integer exerciseSet, Integer repeat, Integer weight) {
