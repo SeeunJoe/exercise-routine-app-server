@@ -29,12 +29,18 @@ public class PlanService {
         } else {
             for (int i = 0; i < 7; i++) {
                 List<String> fitnessNameList = new ArrayList<>();
+
+                boolean isFitnessCheck = false;
                 for (Plan plan : planList) {
                     if (plan.getDayOfWeek().equals(CommonData.weekNameArr[i])) {
                         fitnessNameList.add("[" + plan.getFitness().getFitnessName() + "]");
+                        isFitnessCheck = plan.getFitnessCheckStatus();
                     }
                 }
-                weekInformationList.add(new WeekInformation(CommonData.weekNameArr[i], fitnessNameList));
+
+                WeekInformation weekInformation = new WeekInformation(CommonData.weekNameArr[i], fitnessNameList);
+                weekInformation.updateIsChecked(isFitnessCheck);
+                weekInformationList.add(weekInformation);
             }
         }
 
@@ -65,19 +71,19 @@ public class PlanService {
             plan.updatePlan(
                     requestDTO.getExerciseSet(),
                     null,
-                    null
+                    null, null
             );
         }
         if (requestDTO.getRepeat() != -1) {
             plan.updatePlan(
                     null,
-                    requestDTO.getRepeat(), null
+                    requestDTO.getRepeat(), null, null
             );
         }
         if (requestDTO.getWeight() != -1) {
             plan.updatePlan(
                     null, null,
-                    requestDTO.getWeight()
+                    requestDTO.getWeight(), null
             );
         }
 
@@ -103,5 +109,14 @@ public class PlanService {
     // 요일 별 운동 계획에서 운동 삭제
     public void deleteByPlanId(User sessionUser, Integer id, String weekName) {
         planRepository.deletePlanData(sessionUser, id, weekName);
+    }
+
+    @Transactional
+    public void updateUserWeekInfo(Integer id, PlanRequest.UpdateWeekDTO updateWeekDTO) {
+        List<Plan> planList = planRepository.findByPlanIdAndWeekName(id, updateWeekDTO.getDayOfWeekName());
+
+        for (int i = 0; i < planList.size(); i++) {
+            planList.get(i).updatePlan(null, null, null, updateWeekDTO.status);
+        }
     }
 }

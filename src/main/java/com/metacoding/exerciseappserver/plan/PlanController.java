@@ -21,8 +21,8 @@ public class PlanController {
 
     @GetMapping("/api/plan/user")
     public ResponseEntity<?> userinfo(@SessionUser User sessionUser) {
-        ApiUtil.ApiResult<PlanResponse.UserWeekInfoDTO> resp = ApiUtil.success(planService.findUserWeekInfo(sessionUser.getId()));
-        return ResponseEntity.ok(resp);
+        PlanResponse.UserWeekInfoDTO userWeekInfo = planService.findUserWeekInfo(sessionUser.getId());
+        return ResponseEntity.ok(ApiUtil.success(userWeekInfo));
     }
 
     @PostMapping("/plan/{id}")
@@ -31,6 +31,13 @@ public class PlanController {
 
         return ResponseEntity.ok(resp);
     }
+
+    @PutMapping("/api/plan")
+    public ResponseEntity<?> updateWeekStatus(@SessionUser User sessionUser, @RequestBody PlanRequest.UpdateWeekDTO updateWeekDTO) {
+        planService.updateUserWeekInfo(sessionUser.getId(), updateWeekDTO);
+        return ResponseEntity.ok(ApiUtil.success(null));
+    }
+
     @GetMapping("/plan/detail/{id}")
     public ResponseEntity<?> plan(@PathVariable Integer id) {
         PlanResponse.DetailPlanDTO detailPlanDTO = planService.findByPlanId(id);
