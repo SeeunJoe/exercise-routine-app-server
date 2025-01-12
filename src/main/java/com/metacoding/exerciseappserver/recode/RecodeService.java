@@ -32,7 +32,7 @@ public class RecodeService {
     }
 
     @Transactional
-    @Scheduled(cron = "0 15 1 * * MON") // 매주 월요일 오전 3시 15분에 실행
+    @Scheduled(cron = "0 0 1 * * MON") // 매주 월요일 오전 1시에 실행
     public void updateAllUserPlan() {
         // 모든 Plan을 유저 아이디 기준으로 오름차순 정렬하여 가져오기
         List<Plan> planList = planRepository.findAllPlan();
