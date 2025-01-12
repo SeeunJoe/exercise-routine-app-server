@@ -45,6 +45,7 @@ public class PlanRepository {
         q.executeUpdate();
     }
 
+    // 요일 별 운동 리스트 조회
     public List<Plan> findPlanOfDay(Integer userId, String day) {
         String jpql = "select p from Plan p join fetch p.fitness f where p.user.id = :userId and p.dayOfWeek = :day";
         Query q = em.createQuery(jpql, Plan.class);
@@ -52,5 +53,13 @@ public class PlanRepository {
         q.setParameter("day", day);
 
         return q.getResultList();
+    }
+
+    // 요일 별 운동 리스트 중 운동 삭제
+    public void deletePlanData(Integer planId) {
+        String jpql = "delete from Plan p where p.id = :planId";
+        Query q = em.createQuery(jpql);
+        q.setParameter("planId", planId);
+        q.executeUpdate();
     }
 }

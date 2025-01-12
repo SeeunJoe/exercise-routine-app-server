@@ -85,4 +85,9 @@ public class PlanService {
 
         return planOfDayDTOList;
     }
+
+    // 요일 별 운동 계획에서 운동 삭제
+    public void deleteByPlanId(Integer id) {
+        planRepository.deletePlanData(id);
+    }
 }

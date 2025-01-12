@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
-
-
-import java.util.List;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -59,5 +57,12 @@ public class PlanController {
         List<PlanResponse.PlanOfDayDTO> plans = planService.findPlanOfDay(sessionUser.getId(), day);
         ApiUtil.ApiResult<List<PlanResponse.PlanOfDayDTO>> resp = ApiUtil.success(plans);
         return  ResponseEntity.ok(resp);
+    }
+
+    // 요일 별 운동 계획 리스트에서 운동 삭제
+    @DeleteMapping("/plan/{id}/delete")
+    public ResponseEntity<?> deletePlan(@PathVariable Integer id) {
+        planService.deleteByPlanId(id);
+        return ResponseEntity.ok(ApiUtil.success(null));
     }
 }
