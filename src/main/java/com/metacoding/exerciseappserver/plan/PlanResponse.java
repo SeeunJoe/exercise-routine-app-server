@@ -29,6 +29,7 @@ public class PlanResponse {
         String bodyPart;
         Integer setCount;
         Integer repeatCount;
+        Integer weight;
 
         public PlanOfDayDTO(Plan plan) {
             this.id = plan.getId();
@@ -38,6 +39,7 @@ public class PlanResponse {
             this.bodyPart = plan.getFitness().getCategory().getName();
             this.setCount = plan.getExerciseSet();
             this.repeatCount = plan.getRepeat();
+            this.weight = plan.getWeight();
         }
     }
 
@@ -56,11 +58,11 @@ public class PlanResponse {
             this(
                     plan.getId(),
                     plan.getDayOfWeek(),
-                    plan.getFitness().getFitnessName()!= null ? plan.getFitness().getFitnessName() : "Unknown Fitness",
-                    plan.getFitness().getImageUrl()!= null ? plan.getFitness().getImageUrl() : "",
-                    plan.getFitness().getContent()!= null ? plan.getFitness().getContent() : "",
-                    plan.getRepeat(),
+                    plan.getFitness().getFitnessName(),
+                    plan.getFitness().getImageUrl(),
+                    plan.getFitness().getContent(),
                     plan.getExerciseSet(),
+                    plan.getRepeat(),
                     plan.getWeight()
             );
         }

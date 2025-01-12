@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 @Service
@@ -48,9 +49,10 @@ public class PlanService {
 
 
     public PlanResponse.DTO insertPlan(Integer id, PlanRequest.PlanAddDTO planAddDTO) {
-       Plan plan = planRepository.save(planAddDTO.toEntity(id));
+        Plan plan = planRepository.save(planAddDTO.toEntity(id));
         return new PlanResponse.DTO(plan);
     }
+
     public PlanResponse.DetailPlanDTO findByPlanId(Integer id) {
         Plan detailPlanData = planRepository.findByPlanId(id);
         return new PlanResponse.DetailPlanDTO(detailPlanData);
@@ -58,15 +60,26 @@ public class PlanService {
 
     public PlanResponse.UpdatePlanDTO updatePlan(PlanRequest.UpdatePlanDTO requestDTO) {
 
-        System.out.println("***********요청DTO의 ID값: " + requestDTO.getId());
-
         Plan plan = planRepository.findByPlanId(requestDTO.getId());
-
-        plan.updatePlan(
-                requestDTO.getExerciseSet(),
-                requestDTO.getRepeat(),
-                requestDTO.getWeight()
-        );
+        if (requestDTO.getExerciseSet() != -1) {
+            plan.updatePlan(
+                    requestDTO.getExerciseSet(),
+                    null,
+                    null
+            );
+        }
+        if (requestDTO.getRepeat() != -1) {
+            plan.updatePlan(
+                    null,
+                    requestDTO.getRepeat(), null
+            );
+        }
+        if (requestDTO.getWeight() != -1) {
+            plan.updatePlan(
+                    null, null,
+                    requestDTO.getWeight()
+            );
+        }
 
         planRepository.updatePlanData(plan);
 

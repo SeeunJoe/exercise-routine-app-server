@@ -47,8 +47,15 @@ public class Plan {
     }
 
     public void updatePlan(Integer exerciseSet, Integer repeat, Integer weight) {
-        this.exerciseSet = exerciseSet;
-        this.repeat = repeat;
-        this.weight = weight;
+        if (exerciseSet != null) {
+            this.exerciseSet = exerciseSet;
+        }
+        if (repeat != null) {
+            this.repeat = repeat;
+        }
+        if (weight != null) {
+            this.weight = weight;
+        }
+
     }
 }

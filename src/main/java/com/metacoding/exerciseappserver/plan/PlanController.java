@@ -27,7 +27,6 @@ public class PlanController {
 
     @PostMapping("/plan/{id}")
     public ResponseEntity<?> savePlan(@PathVariable Integer id, @RequestBody PlanRequest.PlanAddDTO planAdd) {
-        System.out.println("시발");
         ApiUtil.ApiResult<PlanResponse.DTO> resp = ApiUtil.success(planService.insertPlan(id, planAdd));
 
         return ResponseEntity.ok(resp);
