@@ -1,6 +1,7 @@
 package com.metacoding.exerciseappserver.plan;
 
 import com.metacoding.exerciseappserver._core.util.CommonData;
+import com.metacoding.exerciseappserver.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -87,7 +88,7 @@ public class PlanService {
     }
 
     // 요일 별 운동 계획에서 운동 삭제
-    public void deleteByPlanId(Integer id) {
-        planRepository.deletePlanData(id);
+    public void deleteByPlanId(User sessionUser, Integer id, String weekName) {
+        planRepository.deletePlanData(sessionUser, id, weekName);
     }
 }

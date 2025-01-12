@@ -12,12 +12,12 @@ public class PlanRequest {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class PlanAddDTO {
-        private Integer userId;
         private Integer fitnessId;
         private String dayOfWeek;
         private Integer exerciseSet;
         private Integer repeat;
         private Integer weight;
+
 
         Plan toEntity(Integer id){
             return Plan.builder().

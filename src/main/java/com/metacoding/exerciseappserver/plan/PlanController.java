@@ -21,18 +21,15 @@ public class PlanController {
 
     @GetMapping("/api/plan/user")
     public ResponseEntity<?> userinfo(@SessionUser User sessionUser) {
-//        if (sessionUser.getId() != id) {
-//            throw new Exception403("해당 정보에 접근할 권한이 없습니다 : "+id);
-//        }
         ApiUtil.ApiResult<PlanResponse.UserWeekInfoDTO> resp = ApiUtil.success(planService.findUserWeekInfo(sessionUser.getId()));
         return ResponseEntity.ok(resp);
     }
 
-    @PostMapping("/api/plan/{id}")
-    public ResponseEntity<?> asd(@PathVariable @SessionUser User sessoinUser, @RequestBody PlanRequest.PlanAddDTO planAdd) {
-        ApiUtil.ApiResult<PlanResponse.DTO> resp = ApiUtil.success(planService.insertPlan(sessoinUser.getId(), planAdd));
+    @PostMapping("/plan/{id}")
+    public ResponseEntity<?> savePlan(@PathVariable Integer id, @RequestBody PlanRequest.PlanAddDTO planAdd) {
+        System.out.println("시발");
+        ApiUtil.ApiResult<PlanResponse.DTO> resp = ApiUtil.success(planService.insertPlan(id, planAdd));
 
-        System.out.println(resp.getResponse().toString());
         return ResponseEntity.ok(resp);
     }
     @GetMapping("/plan/detail/{id}")
@@ -43,9 +40,6 @@ public class PlanController {
 
     @PutMapping("/plan/update")
     public ResponseEntity<?> planUpdate(@RequestBody PlanRequest.UpdatePlanDTO requestDTO){
-        System.out.println("요청온 데이터: " + requestDTO.getId());
-        System.out.println("요청온 데이터: " + requestDTO.getExerciseSet());
-        System.out.println("요청온 데이터: " + requestDTO.getRepeat());
         PlanResponse.UpdatePlanDTO updatePlanDTO = planService.updatePlan(requestDTO);
 
         return ResponseEntity.ok(ApiUtil.success(updatePlanDTO));
@@ -60,9 +54,10 @@ public class PlanController {
     }
 
     // 요일 별 운동 계획 리스트에서 운동 삭제
-    @DeleteMapping("/plan/{id}/delete")
-    public ResponseEntity<?> deletePlan(@PathVariable Integer id) {
-        planService.deleteByPlanId(id);
+    @DeleteMapping("/api/plan/{id}/{weekName}")
+    public ResponseEntity<?> deletePlan(@SessionUser User sessionUser, @PathVariable Integer id, @PathVariable String weekName) {
+
+        planService.deleteByPlanId(sessionUser, id, weekName);
         return ResponseEntity.ok(ApiUtil.success(null));
     }
 }

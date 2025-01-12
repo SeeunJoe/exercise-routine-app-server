@@ -1,5 +1,6 @@
 package com.metacoding.exerciseappserver.plan;
 
+import com.metacoding.exerciseappserver.user.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
@@ -56,10 +57,12 @@ public class PlanRepository {
     }
 
     // 요일 별 운동 리스트 중 운동 삭제
-    public void deletePlanData(Integer planId) {
-        String jpql = "delete from Plan p where p.id = :planId";
+    public void deletePlanData(User sessionUser, Integer planId, String weekName) {
+        String jpql = "delete from Plan p where p.id = :planId and p.dayOfWeek = :weekName and p.user.id = :userId";
         Query q = em.createQuery(jpql);
         q.setParameter("planId", planId);
+        q.setParameter("weekName", weekName);
+        q.setParameter("userId", sessionUser.getId());
         q.executeUpdate();
     }
 }
