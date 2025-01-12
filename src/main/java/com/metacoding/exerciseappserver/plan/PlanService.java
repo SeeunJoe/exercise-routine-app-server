@@ -27,7 +27,7 @@ public class PlanService {
                 weekInformationList.add(new WeekInformation(CommonData.weekNameArr[i], emptyList));
             }
         } else {
-            for (int i = 0; i < planList.size(); i++) {
+            for (int i = 0; i < 7; i++) {
                 List<String> fitnessNameList = new ArrayList<>();
                 for (Plan plan : planList) {
                     if (plan.getDayOfWeek().equals(CommonData.weekNameArr[i])) {

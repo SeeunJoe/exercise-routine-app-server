@@ -72,13 +72,13 @@ insert into fitness_tb(fitness_name, category_id, image_url, content) values('�
 insert into fitness_tb(fitness_name, category_id, image_url, content) values('행잉 레그 레이즈', 6, 'assets/행잉 레그 레이즈.gif', '행잉 레그 레이즈는 하복부 근육을 강화하는 운동입니다. 매달린 상태에서 다리를 들어 올려 복근을 수축시킵니다.');
 insert into fitness_tb(fitness_name, category_id, image_url, content) values('힐 터치', 6, 'assets/힐 터치.gif', '힐 터치는 측면 복근을 강화하는 운동입니다. 바닥에 누워 다리를 들어 올려 손으로 발꿈치를 터치합니다.');
 
-insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '월', 3, 5, 5000);
-insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 2, '월', 4, 5, 5000);
-insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 3, '월', 5, 5, 80000);
-insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 4, '월', 6, 5, 7000);
-insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 5, '화', 7, 5, 100000);
-insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '화', 8, 5, 4000);
-insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight) values(1, 1, '수', 9, 5, 5000);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight, fitness_check) values(1, 1, '월', 3, 5, 5000, false);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight, fitness_check) values(1, 2, '월', 4, 5, 5000, false);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight, fitness_check) values(1, 3, '월', 5, 5, 80000, false);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight, fitness_check) values(1, 4, '월', 6, 5, 7000, false);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight, fitness_check) values(1, 5, '화', 7, 5, 10000, false);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight, fitness_check) values(1, 1, '화', 8, 5, 4000, false);
+insert into plan_tb(user_id, fitness_id, day_of_week, exercise_set, repeat, weight, fitness_check) values(1, 1, '수', 9, 5, 5000, false);
 
 
 
