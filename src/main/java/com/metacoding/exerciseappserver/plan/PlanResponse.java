@@ -93,8 +93,14 @@ class WeekInformation {
 
     List<String> fitnessNameList;
 
+    boolean isChecked;
+
     WeekInformation(String dayOfWeek, List<String> fitnessNameList) {
         this.dayOfWeek = dayOfWeek;
         this.fitnessNameList = fitnessNameList;
+    }
+
+    void updateIsChecked(boolean isChecked) {
+        this.isChecked = isChecked;
     }
 }

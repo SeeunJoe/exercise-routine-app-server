@@ -50,7 +50,7 @@ public class Plan {
         this.weight = weight;
     }
 
-    public void updatePlan(Integer exerciseSet, Integer repeat, Integer weight) {
+    public void updatePlan(Integer exerciseSet, Integer repeat, Integer weight, Boolean fitnessCheckStatus) {
         if (exerciseSet != null) {
             this.exerciseSet = exerciseSet;
         }
@@ -60,6 +60,13 @@ public class Plan {
         if (weight != null) {
             this.weight = weight;
         }
+        if (fitnessCheckStatus != null) {
+            this.fitnessCheck = fitnessCheckStatus;
+        }
 
+    }
+
+    public boolean getFitnessCheckStatus() {
+        return fitnessCheck;
     }
 }

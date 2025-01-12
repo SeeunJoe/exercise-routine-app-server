@@ -8,6 +8,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 public class PlanRequest {
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UpdateWeekDTO {
+        boolean status;
+        String dayOfWeekName;
+    }
+
     @Data
     @NoArgsConstructor
     @AllArgsConstructor

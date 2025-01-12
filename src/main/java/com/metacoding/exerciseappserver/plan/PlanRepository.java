@@ -65,4 +65,18 @@ public class PlanRepository {
         q.setParameter("userId", sessionUser.getId());
         q.executeUpdate();
     }
+
+    public List<Plan> findByPlanIdAndWeekName(Integer id, String dayOfWeekName) {
+        String jpql = "select p from Plan p join fetch p.fitness f where p.user.id = :userId and p.dayOfWeek = :dayOfWeekName";
+        Query q = em.createQuery(jpql, Plan.class);
+        q.setParameter("userId", id);
+        q.setParameter("dayOfWeekName", dayOfWeekName);
+        return q.getResultList();
+    }
+
+    public List<Plan> findAllPlan() {
+        String jpql = "select p from Plan p order by p.user.id asc";
+        Query q = em.createQuery(jpql, Plan.class);
+        return q.getResultList();
+    }
 }
