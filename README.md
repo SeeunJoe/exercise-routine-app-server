@@ -170,7 +170,7 @@
 - 팀 회의를 통해 엑셀을 이용하여 테이블을 구상하고 관리하였습니다.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/65a3a439-ef08-4b5e-84c0-fb148f0a4c30" width="800">
+  <img src="https://github.com/user-attachments/assets/4769d5bb-26e0-48ba-90c0-bf2b93ae2868" width="800">
 </div>
 <br><br>
 
